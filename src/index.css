@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://uilight.netlify.app/main.css");
+
+body {
+  background: #0a0a0a;
+  background-image: 
+    radial-gradient(at 40% 20%, hsla(228, 100%, 8%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189, 100%, 12%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355, 100%, 8%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(228, 100%, 8%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(189, 100%, 8%, 1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(355, 100%, 8%, 1) 0px, transparent 50%);
+  min-height: 100vh;
+  color: #f8fafc;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
