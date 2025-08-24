@@ -4,7 +4,7 @@ import { getTotalCartAmount } from "../../utils/getTotalCartAmount";
 export const PriceDetails = () => {
     const {cart}=useCart();
     const totalCartAmount = getTotalCartAmount(cart);
-    const DeliveryCharge=49;
+    const DeliveryCharge=cart.length>0?49:0;
   return (
     <div className="bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/40 rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 w-full max-w-md mx-auto h-[50vh]">
       {/* Title */}
@@ -21,7 +21,7 @@ export const PriceDetails = () => {
 
         <div className="flex justify-between">
           <p className="text-sm sm:text-base">Delivery Charges</p>
-          <p className="font-medium text-green-400">Rs. 49</p>
+          <p className="font-medium text-green-400">Rs. {cart.length > 0 ? DeliveryCharge : 0}</p>
         </div>
       </div>
 

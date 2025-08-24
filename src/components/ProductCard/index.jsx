@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { findProductInCart } from "../../utils/findProductInCart";
+import { findProductInWishlist } from "../../utils/findProductInWishlist";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const { cart, cartDispatch } = useCart();
+  const { cart, cartDispatch ,wishlist} = useCart();
   const isProductInCart = findProductInCart(cart, product.id);
   
   const onCartClick = (product) => {
@@ -12,6 +13,13 @@ export const ProductCard = ({ product }) => {
       ? cartDispatch({ type: "ADD_TO_CART", payload: product })
       : navigate('/cart');
   };
+  const isProductInWishlist = findProductInWishlist(wishlist, product.id);
+  const onWishlistClick = (product) => {
+    console.log("wishlist clicked",wishlist);
+    !isProductInWishlist
+      ? cartDispatch({ type: "ADD_TO_WISHLIST", payload: product })
+      : navigate('/wishlist');
+  }
   
   return (
     <div className="w-72 bg-gradient-to-br from-gray-900/80 to-black/90 backdrop-blur-xl rounded-2xl shadow-2xl flex flex-col justify-between hover:shadow-cyan-500/20 hover:shadow-2xl transition-all duration-500 border border-gray-700/50 hover:border-cyan-500/30 group">
@@ -34,12 +42,12 @@ export const ProductCard = ({ product }) => {
         <p className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2">
           Rs. {product.price * 25}
         </p>
-        
-        <button className="w-full mt-4 py-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 backdrop-blur-sm text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:from-pink-500/70 hover:to-purple-500/70 transition-all duration-300 border border-gray-600/30 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/25 group/wishlist">
+
+        <button  onClick={() => onWishlistClick(product)} className="w-full mt-4 py-3 bg-gradient-to-r from-gray-700/50 to-gray-600/50 backdrop-blur-sm text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:from-pink-500/70 hover:to-purple-500/70 transition-all duration-300 border border-gray-600/30 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/25 group/wishlist">
           <span className="material-icons-outlined group-hover/wishlist:scale-110 transition-transform duration-200">
             favorite
           </span>
-          Add To Wishlist
+         {isProductInWishlist ? 'Go to Wishlist' : 'Add to Wishlist'}
         </button>
         
         <button 

@@ -10,6 +10,16 @@ export const cartReducer = (state,{type,payload}) => {
                 ...state,
                 cart: state.cart.filter(product => product.id !== payload.id)
             }
+        case "ADD_TO_WISHLIST":
+            return {
+                ...state,
+                wishlist: [...state.wishlist, payload]
+            }
+        case "REMOVE_FROM_WISHLIST":
+            return {
+                ...state,
+                wishlist: state.wishlist.filter(product => product.id !== payload.id)
+            }
         default:
             return state
     }

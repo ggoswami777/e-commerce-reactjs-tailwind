@@ -1,9 +1,17 @@
 import { useCart } from "../../context/cart-context";
-
+import { findProductInWishlist } from "../../utils/findProductInWishlist";
 export const HorizontalProductCard = ({ product }) => {
   const { cartDispatch } = useCart();
+  const { wishlist } = useCart();
+   const isProductInWishlist = findProductInWishlist(wishlist, product.id);
   const onRemoveClick = (product) => {
     cartDispatch({ type: "REMOVE_FROM_CART", payload: { id: product.id } });
+  }
+  const onWishlistClick = (product) => {
+   
+    !isProductInWishlist
+      ? cartDispatch({ type: "ADD_TO_WISHLIST", payload: product })
+      : cartDispatch({ type: "REMOVE_FROM_WISHLIST", payload: { id: product.id } });
   }
 
   return (
@@ -47,11 +55,11 @@ export const HorizontalProductCard = ({ product }) => {
             Remove from Cart
           </button>
 
-          <button className="flex-1 py-2 sm:py-3 px-3 sm:px-4 bg-gradient-to-r from-gray-700/50 to-gray-600/50 backdrop-blur-sm text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:from-pink-500/70 hover:to-purple-500/70 transition-all duration-300 border border-gray-600/30 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/25 group/wishlist">
+          <button onClick={() => onWishlistClick(product)} className="flex-1 py-2 sm:py-3 px-3 sm:px-4 bg-gradient-to-r from-gray-700/50 to-gray-600/50 backdrop-blur-sm text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:from-pink-500/70 hover:to-purple-500/70 transition-all duration-300 border border-gray-600/30 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/25 group/wishlist">
             <span className="text-red-400 group-hover/wishlist:scale-110 transition-transform duration-200">
               ❤️
             </span>
-            Move to Wishlist
+            {isProductInWishlist ? 'Remove from Wishlist' : 'Move to Wishlist'}
           </button>
         </div>
       </div>
