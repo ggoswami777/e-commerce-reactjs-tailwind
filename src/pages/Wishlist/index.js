@@ -8,7 +8,7 @@ export const Wishlist=()=>{
     return(
         <>
         <Navbar />
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 px-4 sm:px-6 lg:px-8 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 mt-16 to-slate-800 px-4 sm:px-6 lg:px-8 py-8">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white/90 mb-8 sm:mb-12 text-center lg:text-left bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
                     My Wishlist

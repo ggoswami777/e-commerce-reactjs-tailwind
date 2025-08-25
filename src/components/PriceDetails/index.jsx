@@ -6,7 +6,7 @@ export const PriceDetails = () => {
     const totalCartAmount = getTotalCartAmount(cart);
     const DeliveryCharge=cart.length>0?49:0;
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/40 rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 w-full max-w-md mx-auto h-[50vh]">
+    <div className="bg-gradient-to-br from-gray-900/90 to-black/95 backdrop-blur-xl border border-gray-700/40 rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 w-full max-w-md mx-auto h-[35vh] md:h-[50vh]">
       {/* Title */}
       <h2 className="text-xl sm:text-2xl font-bold text-white/90 border-b border-gray-700/50 pb-3 mb-4">
         Price Details
