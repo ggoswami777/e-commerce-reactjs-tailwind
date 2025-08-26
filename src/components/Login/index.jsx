@@ -3,7 +3,7 @@ import { userLogin } from "../../api/auth";
 import { useLogin } from "../../context/login-context";
 
 export const Login = () => {
-  const { loginDispatch, email, password, token } = useLogin();
+  const { loginDispatch, email, password} = useLogin();
   const navigate = useNavigate();
 
   const onFormSubmit = async (e) => {

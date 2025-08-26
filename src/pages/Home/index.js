@@ -10,7 +10,7 @@ export const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const { cart } = useCart();
+  
   useEffect(() => {
     (async () => {
       const data = await getAllProducts();
