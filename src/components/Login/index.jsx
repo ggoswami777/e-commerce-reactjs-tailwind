@@ -3,20 +3,20 @@ import { userLogin } from "../../api/auth";
 import { useLogin } from "../../context/login-context";
 
 export const Login = () => {
-  const { loginDispatch ,email,password,token} = useLogin();
-  const navigate=useNavigate();
+  const { loginDispatch, email, password, token } = useLogin();
+  const navigate = useNavigate();
 
-  const onFormSubmit =  async (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
-    const data= await userLogin(email,password);
+    const data = await userLogin(email, password);
     loginDispatch({
-        type:'TOKEN',
-        payload:{
-            token:data
-        }
-    })
-    if(data.access_token){
-        navigate('/');
+      type: "TOKEN",
+      payload: {
+        token: data,
+      },
+    });
+    if (data.access_token) {
+      navigate("/");
     }
     console.log(data);
   };
@@ -74,6 +74,19 @@ export const Login = () => {
         <button className="w-full mt-3 py-3 bg-gradient-to-r from-cyan-600/80 to-blue-600/80 backdrop-blur-sm text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-500/30 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 group/cart">
           Login
         </button>
+      </div>
+
+      {/* Demo credentials info */}
+      <div className="mt-6 p-4 rounded-xl bg-gray-800/50 border border-gray-700/40 text-gray-300 text-sm sm:text-base">
+        <p className="font-semibold text-white/90 mb-2">Demo Credentials:</p>
+        <p>
+          <span className="text-cyan-400 font-medium">Email:</span>{" "}
+          john@mail.com
+        </p>
+        <p>
+          <span className="text-cyan-400 font-medium">Password:</span>{" "}
+          changeme
+        </p>
       </div>
     </form>
   );
