@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Navbar } from "../../components/Navbar";
 import { getAllProducts } from "../../api/getAllProducts";
 import { ProductCard } from "../../components/ProductCard";
-import { useCart } from "../../context/cart-context";
 import { getAllCategories } from "../../api/getAllCategories";
 import { getProductsByCategories } from "../../utils/getProductsByCategories";
 
